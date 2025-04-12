@@ -96,18 +96,6 @@ The project uses Docker Compose to manage two containers:
    - SQLite database
    - Development server on port 8000
 
-## Environment Variables
-
-### Flask App
-- FLASK_ENV: development
-- FLASK_DEBUG: 1
-- SECRET_KEY: Custom secret key for security
-- PYTHONUNBUFFERED: 1
-
-### Django App
-- DEBUG: 1
-- PYTHONUNBUFFERED: 1
-
 ## Development
 
 To make changes to the application:
@@ -115,15 +103,6 @@ To make changes to the application:
 1. The code is mounted as volumes, so changes will reflect immediately
 2. Both applications have debug mode enabled for development
 3. Auto-reload is enabled for both services
-
-## Production Deployment
-
-For production deployment:
-
-1. Change debug settings to False
-2. Use proper secret keys
-3. Configure proper database settings for Django
-4. Use production-grade servers instead of development servers
 
 ## Docker Hub Images
 
