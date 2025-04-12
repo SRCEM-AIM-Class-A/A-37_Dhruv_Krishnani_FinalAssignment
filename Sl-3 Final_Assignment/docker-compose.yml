@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  flask_app:
+    container_name: dhruvkrishnani2-flask
+    build: ./flask_app
+    image: dhruvkrishnani2/flask-app:latest
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./flask_app:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+      - SECRET_KEY=dev-secret-key-please-change-in-production
+      - PYTHONUNBUFFERED=1
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  django_app:
+    container_name: dhruvkrishnani2-django
+    build: ./django_app
+    image: dhruvkrishnani2/django-app:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django_app:/app
+    environment:
+      - DEBUG=1
+      - PYTHONUNBUFFERED=1
+    networks:
+      - app_network
+    restart: unless-stopped
+
+networks:
+  app_network:
+    driver: bridge
